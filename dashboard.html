@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Dashboard | CSC AI ACADEMY
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
+</head>
+
+
+<body class="dashboard-shell">
+
+
+<header class="nav-wrap">
+
+  <nav class="nav container">
+
+    <a
+      class="brand"
+      href="index.html">
+
+      CSC <span>AI</span> ACADEMY
+
+    </a>
+
+
+    <div
+      class="nav-links"
+      style="display:flex">
+
+      <a href="index.html#courses">
+        Courses
+      </a>
+
+      <a href="index.html#certificate">
+        Certificate
+      </a>
+
+      <a
+        href="https://wa.me/2348120897686"
+        target="_blank">
+
+        WhatsApp
+
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<main class="container dash-main">
+
+
+<div class="dash-head">
+
+  <div>
+
+    <p class="eyebrow">
+      LEARNER DASHBOARD
+    </p>
+
+    <h1 id="welcome">
+      Welcome
+    </h1>
+
+    <p>
+      Founder & Owner:
+      <b>Chris Vincent</b>
+
+      •
+
+      Support:
+      <b>08120897686</b>
+    </p>
+
+  </div>
+
+
+  <button
+    class="btn outline"
+    onclick="logout()">
+
+    LOG OUT
+
+  </button>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div
+  id="loginBox"
+  class="card form"
+  style="max-width:600px;display:none">
+
+  <h2>
+    Find your learner account
+  </h2>
+
+  <p>
+    Enter the email used during enrollment.
+  </p>
+
+  <input
+    id="loginEmail"
+    type="email"
+    placeholder="Email">
+
+  <button
+    class="btn premium"
+    onclick="login()">
+
+    OPEN DASHBOARD
+
+  </button>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div
+  id="dashContent"
+  style="display:none">
+
+
+<div class="dash-grid">
+
+
+  <div class="card dash-card">
+
+    <p class="eyebrow">
+      YOUR PLAN
+    </p>
+
+    <h2 id="planName">
+      —
+    </h2>
+
+    <p id="planAmount">
+      —
+    </p>
+
+    <p>
+      Lifetime access model
+    </p>
+
+  </div>
+
+
+  <div class="card dash-card">
+
+    <p class="eyebrow">
+      STUDENT
+    </p>
+
+    <h2 id="studentName">
+      —
+    </h2>
+
+    <p id="studentEmail">
+      —
+    </p>
+
+  </div>
+
+
+  <div class="card dash-card">
+
+    <p class="eyebrow">
+      SUPPORT
+    </p>
+
+    <h2>
+      Chris Vincent
+    </h2>
+
+    <p>
+      Founder & Owner
+    </p>
+
+    <a
+      class="btn premium w100"
+      href="https://wa.me/2348120897686"
+      target="_blank">
+
+      WHATSAPP
+
+    </a>
+
+  </div>
+
+
+</div>
+
+
+<div
+  class="card"
+  style="margin-top:18px">
+
+
+  <div class="section-head">
+
+    <div>
+
+      <p class="eyebrow">
+        YOUR COURSES
+      </p>
+
+      <h2>
+        Unlocked learning
+      </h2>
+
+    </div>
+
+
+    <a
+      class="btn outline"
+      href="index.html#certificate">
+
+      CERTIFICATE
+
+    </a>
+
+  </div>
+
+
+  <div id="courseList"></div>
+
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+
+      <b>
+        CSC AI ACADEMY
+      </b>
+
+      <span>
+        Learn. Build. Create.
+      </span>
+
+    </div>
+
+
+    <div>
+
+      <b>
+        Founder & Owner: Chris Vincent
+      </b>
+
+      <span>
+        Support: 08120897686
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const PLANS = [
+
+  {
+    id:"STARTER",
+    rank:1
+  },
+
+  {
+    id:"BASIC",
+    rank:2
+  },
+
+  {
+    id:"STANDARD",
+    rank:3
+  },
+
+  {
+    id:"PRO",
+    rank:4
+  },
+
+  {
+    id:"ELITE",
+    rank:5
+  }
+
+];
+
+
+const COURSES = [
+
+  ["AI Tools",1],
+
+  ["AI App Development",2],
+
+  ["Website with AI",2],
+
+  ["Cinematic AI Video",3],
+
+  ["AI Content Creation",3],
+
+  ["AI Business",3],
+
+  ["AI Monetization",4],
+
+  ["AI Automation",4],
+
+  ["GameVerse Builder",4],
+
+  ["Elite Build For You",5]
+
+];
+
+
+function getUsers(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "csc_users"
+      ) || "[]"
+    );
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function getUser(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "csc_user"
+      ) || "null"
+    );
+
+  }catch(error){
+
+    return null;
+
+  }
+
+}
+
+
+function planRank(plan){
+
+  const found =
+    PLANS.find(
+      item => item.id === plan
+    );
+
+  return found
+    ? found.rank
+    : 0;
+
+}
+
+
+function render(){
+
+  const user =
+    getUser();
+
+
+  const box =
+    document.getElementById(
+      "dashContent"
+    );
+
+
+  const loginBox =
+    document.getElementById(
+      "loginBox"
+    );
+
+
+  if(!user){
+
+    loginBox.style.display =
+      "flex";
+
+    box.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  loginBox.style.display =
+    "none";
+
+  box.style.display =
+    "block";
+
+
+  document.getElementById(
+    "welcome"
+  ).textContent =
+    "Welcome, " +
+    user.name;
+
+
+  document.getElementById(
+    "studentName"
+  ).textContent =
+    user.name;
+
+
+  document.getElementById(
+    "studentEmail"
+  ).textContent =
+    user.email;
+
+
+  document.getElementById(
+    "planName"
+  ).textContent =
+    user.planName ||
+    user.plan;
+
+
+  document.getElementById(
+    "planAmount"
+  ).textContent =
+    "Paid: ₦" +
+    Number(
+      user.amount || 0
+    ).toLocaleString("en-NG");
+
+
+  const rank =
+    planRank(
+      user.plan
+    );
+
+
+  document.getElementById(
+    "courseList"
+  ).innerHTML =
+
+    COURSES.map(
+      course => `
+
+        <div
+          class="course-unlock
+          ${course[1] <= rank ? "" : "locked"}">
+
+          <span>
+
+            <b>
+              ${course[0]}
+            </b>
+
+            <small>
+              •
+              ${
+                course[1] <= rank
+                ? "Unlocked"
+                : "Locked"
+              }
+            </small>
+
+          </span>
+
+          ${
+            course[1] <= rank
+            ? "<span>✓</span>"
+            : "<span>🔒</span>"
+          }
+
+        </div>
+
+      `
+    ).join("");
+
+}
+
+
+function login(){
+
+  const email =
+    document.getElementById(
+      "loginEmail"
+    ).value
+      .trim()
+      .toLowerCase();
+
+
+  const user =
+    getUsers().find(
+      item =>
+        item.email.toLowerCase()
+        === email
+    );
+
+
+  if(!user){
+
+    alert(
+      "No learner account found for that email in this browser."
+    );
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    "csc_user",
+    JSON.stringify(user)
+  );
+
+
+  render();
+
+}
+
+
+function logout(){
+
+  localStorage.removeItem(
+    "csc_user"
+  );
+
+  render();
+
+}
+
+
+render();
+
+</script>
+
+
+</body>
+</html>

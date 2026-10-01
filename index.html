@@ -1,0 +1,860 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="CSC AI ACADEMY — Learn. Build. Create.">
+  <title>CSC AI ACADEMY | Chris Vincent</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <div class="loader-box">
+      <strong>CSC AI • CHRIS VINCENT</strong>
+      <div class="loader-bar">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="nav-wrap">
+    <nav class="nav container">
+
+      <a href="#home" class="brand" onclick="go('home'); return false;">
+        CSC <span>AI</span> ACADEMY
+      </a>
+
+      <button class="nav-toggle btn outline" id="navToggle">
+        MENU
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" onclick="go('home'); return false;">Home</a>
+        <a href="#founder" onclick="go('founder'); return false;">Founder</a>
+        <a href="#courses" onclick="go('courses'); return false;">Courses</a>
+        <a href="#pricing" onclick="go('pricing'); return false;">Pricing</a>
+        <a href="#certificate" onclick="go('certificate'); return false;">Certificate</a>
+        <a href="#contact" onclick="go('contact'); return false;">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- HOME -->
+    <section id="home" class="page active">
+
+      <div class="container hero">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">
+            FOUNDED & OWNED BY CHRIS VINCENT
+          </div>
+
+          <h1>
+            Learn. Build.
+            <span>Create.</span>
+          </h1>
+
+          <p class="hero-sub">
+            Practical AI skills for creators, builders, entrepreneurs
+            and future-ready professionals.
+            <b>Intelligence is the new superpower.</b>
+          </p>
+
+          <div class="actions">
+
+            <button
+              class="btn premium big"
+              onclick="go('pricing')">
+              START LEARNING
+            </button>
+
+            <button
+              class="btn ghost big"
+              onclick="go('courses')">
+              VIEW COURSES
+            </button>
+
+          </div>
+
+          <div class="hero-stats">
+
+            <div>
+              <b>10+</b>
+              <span>AI Courses</span>
+            </div>
+
+            <div>
+              <b>5</b>
+              <span>Lifetime Plans</span>
+            </div>
+
+            <div>
+              <b>∞</b>
+              <span>Build Potential</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="founder-mini card">
+
+          <div class="avatar">
+            CV
+          </div>
+
+          <p class="mini-label">
+            FOUNDER & OWNER
+          </p>
+
+          <h2>
+            Chris Vincent
+          </h2>
+
+          <p>
+            Building a practical learning community around
+            AI tools, digital creation, automation and online business.
+          </p>
+
+          <a
+            class="btn premium w100"
+            href="https://wa.me/2348120897686"
+            target="_blank">
+            WHATSAPP 08120897686
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- MARQUEE -->
+
+      <div class="marquee">
+
+        <div class="marquee-track">
+
+          <span>AI TOOLS</span>
+          <i>✦</i>
+
+          <span>AI APP DEVELOPMENT</span>
+          <i>✦</i>
+
+          <span>AI VIDEO</span>
+          <i>✦</i>
+
+          <span>AI BUSINESS</span>
+          <i>✦</i>
+
+          <span>AUTOMATION</span>
+          <i>✦</i>
+
+          <span>GAMEVERSE</span>
+          <i>✦</i>
+
+          <span>AI CONTENT</span>
+          <i>✦</i>
+
+        </div>
+
+      </div>
+
+
+      <!-- WHAT YOU WILL BUILD -->
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div>
+
+            <p class="eyebrow">
+              WHAT YOU WILL BUILD
+            </p>
+
+            <h2>
+              Turn AI into real projects.
+            </h2>
+
+          </div>
+
+          <button
+            class="btn outline"
+            onclick="go('courses')">
+            ALL COURSES
+          </button>
+
+        </div>
+
+
+        <div class="build-grid">
+
+          <article class="card build">
+            <span>01</span>
+            <h3>AI Videos</h3>
+            <p>
+              Create cinematic and realistic AI video content.
+            </p>
+          </article>
+
+          <article class="card build">
+            <span>02</span>
+            <h3>AI Apps</h3>
+            <p>
+              Build useful applications with modern AI tools.
+            </p>
+          </article>
+
+          <article class="card build">
+            <span>03</span>
+            <h3>Websites</h3>
+            <p>
+              Launch polished websites faster with AI.
+            </p>
+          </article>
+
+          <article class="card build">
+            <span>04</span>
+            <h3>AI Systems</h3>
+            <p>
+              Automate repetitive workflows and business tasks.
+            </p>
+          </article>
+
+          <article class="card build">
+            <span>05</span>
+            <h3>Digital Products</h3>
+            <p>
+              Create products, content and services people can use.
+            </p>
+          </article>
+
+          <article class="card build">
+            <span>06</span>
+            <h3>Games</h3>
+            <p>
+              Explore game creation with GameVerse Builder.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+
+      <!-- HOW IT WORKS -->
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div>
+
+            <p class="eyebrow">
+              HOW IT WORKS
+            </p>
+
+            <h2>
+              Simple. Practical. Lifetime.
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="steps">
+
+          <div class="step card">
+            <b>1</b>
+            <h3>Choose a plan</h3>
+            <p>
+              Select the access level that fits your goals.
+            </p>
+          </div>
+
+          <div class="step card">
+            <b>2</b>
+            <h3>Pay once</h3>
+            <p>
+              Choose the lifetime access plan you want.
+            </p>
+          </div>
+
+          <div class="step card">
+            <b>3</b>
+            <h3>Build & learn</h3>
+            <p>
+              Access the courses unlocked by your plan.
+            </p>
+          </div>
+
+          <div class="step card">
+            <b>4</b>
+            <h3>Get certified</h3>
+            <p>
+              Generate and verify your academy certificate.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOUNDER -->
+
+    <section id="founder" class="page">
+
+      <div class="container section">
+
+        <div class="founder-hero card">
+
+          <div class="avatar avatar-lg">
+            CV
+          </div>
+
+          <div>
+
+            <p class="eyebrow">
+              FOUNDER & OWNER
+            </p>
+
+            <h1>
+              Chris Vincent
+            </h1>
+
+            <p class="tagline">
+              Learn. Build. Create.
+            </p>
+
+            <p>
+              Founder of <b>CSC AI ACADEMY</b>, a practical
+              academy focused on helping people understand and
+              apply artificial intelligence to content, products,
+              websites, apps, automation and business.
+            </p>
+
+            <a
+              class="btn premium"
+              href="https://wa.me/2348120897686"
+              target="_blank">
+              CHAT WITH CHRIS
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="two-col">
+
+          <article class="card">
+
+            <p class="eyebrow">
+              THE STORY
+            </p>
+
+            <h2>
+              From curiosity to creation.
+            </h2>
+
+            <p>
+              CSC AI ACADEMY is built around a simple idea:
+              AI should be learned by doing.
+            </p>
+
+            <p>
+              Instead of keeping AI as theory, the academy
+              organizes practical tracks around tools and projects
+              that learners can turn into real digital work.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <p class="eyebrow">
+              THE MISSION
+            </p>
+
+            <h2>
+              Make AI practical.
+            </h2>
+
+            <ul class="clean-list">
+
+              <li>Learn modern AI tools.</li>
+
+              <li>Build useful digital projects.</li>
+
+              <li>Create professional content.</li>
+
+              <li>Automate repetitive work.</li>
+
+              <li>Explore AI-powered business models.</li>
+
+            </ul>
+
+          </article>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="card stat-card">
+            <b>10+</b>
+            <span>Core courses</span>
+          </div>
+
+          <div class="card stat-card">
+            <b>5</b>
+            <span>Access tiers</span>
+          </div>
+
+          <div class="card stat-card">
+            <b>1×</b>
+            <span>Lifetime payment</span>
+          </div>
+
+          <div class="card stat-card">
+            <b>24/7</b>
+            <span>Digital access</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- COURSES -->
+
+    <section id="courses" class="page">
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div>
+
+            <p class="eyebrow">
+              THE ACADEMY
+            </p>
+
+            <h1>
+              10 AI learning tracks
+            </h1>
+
+            <p>
+              Choose a plan in Pricing to unlock your courses.
+            </p>
+
+          </div>
+
+          <button
+            class="btn premium"
+            onclick="go('pricing')">
+            SEE PLANS
+          </button>
+
+        </div>
+
+        <div id="coursesGrid" class="course-grid"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+
+    <section id="pricing" class="page">
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div>
+
+            <p class="eyebrow">
+              ONE PAYMENT • LIFETIME ACCESS
+            </p>
+
+            <h1>
+              Choose your build level.
+            </h1>
+
+            <p>
+              Prices are shown in Nigerian Naira.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div id="pricingGrid" class="pricing-grid"></div>
+
+        <div class="card compare-wrap">
+
+          <h2>
+            Plan comparison
+          </h2>
+
+          <div class="table-scroll">
+            <table id="compareTable"></table>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CERTIFICATE -->
+
+    <section id="certificate" class="page">
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div>
+
+            <p class="eyebrow">
+              CERTIFICATION
+            </p>
+
+            <h1>
+              Generate & verify your certificate.
+            </h1>
+
+            <p>
+              Create your CSC AI ACADEMY certificate.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="two-col">
+
+          <form class="card form" id="certForm">
+
+            <label>
+              Full name
+
+              <input
+                id="certName"
+                required
+                maxlength="80"
+                placeholder="Your full name">
+            </label>
+
+
+            <label>
+              Plan
+
+              <select id="certPlan" required></select>
+
+            </label>
+
+
+            <label>
+              Date
+
+              <input
+                id="certDate"
+                type="date"
+                required>
+            </label>
+
+
+            <button
+              class="btn premium big w100"
+              type="submit">
+              GENERATE CERTIFICATE
+            </button>
+
+          </form>
+
+
+          <div
+            id="certificatePreview"
+            class="certificate-paper empty">
+
+            <p>
+              Certificate preview will appear here.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card form verify-box">
+
+          <h2>
+            Verify certificate
+          </h2>
+
+          <div class="inline-form">
+
+            <input
+              id="verifyId"
+              placeholder="CSC-XXXX">
+
+            <button
+              class="btn"
+              onclick="verifyCertificate()">
+              VERIFY
+            </button>
+
+          </div>
+
+          <div id="verifyResult"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="page">
+
+      <div class="container section">
+
+        <div class="section-head">
+
+          <div>
+
+            <p class="eyebrow">
+              CONTACT
+            </p>
+
+            <h1>
+              Talk to CSC AI ACADEMY.
+            </h1>
+
+          </div>
+
+        </div>
+
+
+        <div class="two-col">
+
+          <div class="card contact-card">
+
+            <div class="avatar">
+              CV
+            </div>
+
+            <p class="eyebrow">
+              FOUNDER & OWNER
+            </p>
+
+            <h2>
+              Chris Vincent
+            </h2>
+
+            <p>
+              <b>CSC AI ACADEMY</b>
+            </p>
+
+            <p>
+              Learn. Build. Create.
+            </p>
+
+            <p>
+              Intelligence is the new superpower.
+            </p>
+
+            <a
+              class="btn premium w100"
+              href="https://wa.me/2348120897686"
+              target="_blank">
+              WHATSAPP 08120897686
+            </a>
+
+          </div>
+
+
+          <form
+            class="card form"
+            id="contactForm">
+
+            <h2>
+              Send a WhatsApp message
+            </h2>
+
+            <label>
+              Your name
+
+              <input
+                id="contactName"
+                required
+                maxlength="80"
+                placeholder="Your name">
+
+            </label>
+
+
+            <label>
+              Message
+
+              <textarea
+                id="contactMessage"
+                required
+                maxlength="1000"
+                rows="6"
+                placeholder="How can we help?"></textarea>
+
+            </label>
+
+
+            <button
+              class="btn premium big w100"
+              type="submit">
+              OPEN WHATSAPP
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+        <b>CSC AI ACADEMY</b>
+        <span>
+          Learn. Build. Create.
+        </span>
+      </div>
+
+      <div>
+        <b>
+          Founder & Owner: Chris Vincent
+        </b>
+
+        <span>
+          Support: 08120897686
+        </span>
+      </div>
+
+      <a
+        href="https://wa.me/2348120897686"
+        target="_blank">
+        WhatsApp
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <!-- AI ASSISTANT -->
+
+  <button
+    id="aiButton"
+    class="ai-button btn premium">
+    AI
+  </button>
+
+
+  <aside
+    id="aiPanel"
+    class="ai-panel">
+
+    <div class="ai-head">
+
+      <div>
+
+        <b>
+          CSC AI Assistant
+        </b>
+
+        <small>
+          Chris Vincent • 08120897686
+        </small>
+
+      </div>
+
+      <button
+        class="close-ai"
+        onclick="toggleAI()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      id="aiMessages"
+      class="ai-messages">
+
+      <div class="ai-msg bot">
+        Hi! I'm the CSC AI Assistant.
+        Ask about courses, plans, certificates
+        or contacting Chris Vincent.
+      </div>
+
+    </div>
+
+
+    <form
+      id="aiForm"
+      class="ai-form">
+
+      <input
+        id="aiInput"
+        required
+        placeholder="Ask a question...">
+
+      <button
+        class="btn premium"
+        type="submit">
+        SEND
+      </button>
+
+    </form>
+
+  </aside>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>

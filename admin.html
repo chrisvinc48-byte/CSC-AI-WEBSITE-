@@ -1,0 +1,573 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Admin | CSC AI ACADEMY
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="nav-wrap">
+
+  <nav class="nav container">
+
+    <a
+      class="brand"
+      href="index.html">
+
+      CSC <span>AI</span> ACADEMY
+
+    </a>
+
+
+    <div
+      class="nav-links"
+      style="display:flex">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="dashboard.html">
+        Dashboard
+      </a>
+
+      <a
+        href="https://wa.me/2348120897686"
+        target="_blank">
+
+        Chris Vincent • 08120897686
+
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<main class="container section">
+
+
+<div class="section-head">
+
+  <div>
+
+    <p class="eyebrow">
+      ADMIN • FOUNDER & OWNER
+    </p>
+
+    <h1>
+      Revenue dashboard
+    </h1>
+
+    <p>
+      Chris Vincent
+      •
+      CSC AI ACADEMY
+      •
+      Support 08120897686
+    </p>
+
+  </div>
+
+
+  <button
+    class="btn outline"
+    onclick="refreshAdmin()">
+
+    REFRESH
+
+  </button>
+
+</div>
+
+
+<div
+  id="stats"
+  class="admin-grid">
+</div>
+
+
+<div
+  class="card"
+  style="margin-bottom:22px">
+
+  <h2>
+    Sales by tier
+  </h2>
+
+  <div
+    id="tiers"
+    class="stats-grid">
+  </div>
+
+</div>
+
+
+<div
+  class="card"
+  style="margin-bottom:22px">
+
+  <h2>
+    Students
+  </h2>
+
+  <div class="admin-table">
+
+    <table id="students"></table>
+
+  </div>
+
+</div>
+
+
+<div class="card">
+
+  <h2>
+    Certificates
+  </h2>
+
+  <div class="admin-table">
+
+    <table id="certs"></table>
+
+  </div>
+
+</div>
+
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+
+      <b>
+        CSC AI ACADEMY
+      </b>
+
+      <span>
+        Learn. Build. Create.
+      </span>
+
+    </div>
+
+
+    <div>
+
+      <b>
+        Founder & Owner: Chris Vincent
+      </b>
+
+      <span>
+        08120897686
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const PLANS = {
+
+  STARTER:5000,
+
+  BASIC:10000,
+
+  STANDARD:20000,
+
+  PRO:50000,
+
+  ELITE:100000
+
+};
+
+
+function users(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "csc_users"
+      ) || "[]"
+    );
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function certificates(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "csc_certificates"
+      ) || "[]"
+    );
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function refreshAdmin(){
+
+  const students =
+    users();
+
+
+  const certs =
+    certificates();
+
+
+  const total =
+    students.reduce(
+      (sum,user) =>
+        sum +
+        Number(
+          user.amount ||
+          PLANS[user.plan] ||
+          0
+        ),
+      0
+    );
+
+
+  const average =
+    students.length
+    ?
+    total / students.length
+    :
+    0;
+
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(0,10);
+
+
+  const todaySales =
+    students
+      .filter(
+        user =>
+          String(
+            user.paidAt || ""
+          ).slice(0,10)
+          === today
+      )
+      .reduce(
+        (sum,user) =>
+          sum +
+          Number(
+            user.amount ||
+            PLANS[user.plan] ||
+            0
+          ),
+        0
+      );
+
+
+  document.getElementById(
+    "stats"
+  ).innerHTML = [
+
+    [
+      "TOTAL REVENUE",
+      "₦" +
+      total.toLocaleString("en-NG")
+    ],
+
+    [
+      "TOTAL STUDENTS",
+      students.length
+    ],
+
+    [
+      "AVERAGE PLAN",
+      "₦" +
+      Math.round(
+        average
+      ).toLocaleString("en-NG")
+    ],
+
+    [
+      "TODAY SALES",
+      "₦" +
+      todaySales.toLocaleString("en-NG")
+    ]
+
+  ].map(
+    item => `
+
+      <div class="card admin-stat">
+
+        <p class="eyebrow">
+          ${item[0]}
+        </p>
+
+        <b>
+          ${item[1]}
+        </b>
+
+      </div>
+
+    `
+  ).join("");
+
+
+  const counts = {
+
+    STARTER:0,
+
+    BASIC:0,
+
+    STANDARD:0,
+
+    PRO:0,
+
+    ELITE:0
+
+  };
+
+
+  students.forEach(
+    user => {
+
+      if(
+        counts[user.plan] !==
+        undefined
+      ){
+
+        counts[user.plan]++;
+
+      }
+
+    }
+  );
+
+
+  document.getElementById(
+    "tiers"
+  ).innerHTML =
+
+    Object.entries(
+      counts
+    ).map(
+      ([name,count]) => `
+
+        <div class="card stat-card">
+
+          <b>
+            ${count}
+          </b>
+
+          <span>
+            ${name}
+          </span>
+
+        </div>
+
+      `
+    ).join("");
+
+
+  document.getElementById(
+    "students"
+  ).innerHTML = `
+
+    <thead>
+
+      <tr>
+
+        <th>Name</th>
+
+        <th>Email</th>
+
+        <th>Plan</th>
+
+        <th>Amount</th>
+
+        <th>Paid</th>
+
+        <th>Reference</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      ${
+        students.map(
+          user => `
+
+            <tr>
+
+              <td>
+                ${escapeHTML(user.name)}
+              </td>
+
+              <td>
+                ${escapeHTML(user.email)}
+              </td>
+
+              <td>
+                ${escapeHTML(user.plan)}
+              </td>
+
+              <td>
+                ₦${Number(
+                  user.amount || 0
+                ).toLocaleString("en-NG")}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  user.paidAt || ""
+                ).slice(0,10)}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  user.reference || ""
+                )}
+              </td>
+
+            </tr>
+
+          `
+        ).join("")
+      }
+
+    </tbody>
+
+  `;
+
+
+  document.getElementById(
+    "certs"
+  ).innerHTML = `
+
+    <thead>
+
+      <tr>
+
+        <th>ID</th>
+
+        <th>Name</th>
+
+        <th>Plan</th>
+
+        <th>Date</th>
+
+        <th>Founder</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      ${
+        certs.map(
+          cert => `
+
+            <tr>
+
+              <td>
+                ${escapeHTML(cert.id)}
+              </td>
+
+              <td>
+                ${escapeHTML(cert.name)}
+              </td>
+
+              <td>
+                ${escapeHTML(cert.plan)}
+              </td>
+
+              <td>
+                ${escapeHTML(cert.date)}
+              </td>
+
+              <td>
+                Chris Vincent
+              </td>
+
+            </tr>
+
+          `
+        ).join("")
+      }
+
+    </tbody>
+
+  `;
+
+}
+
+
+function escapeHTML(value){
+
+  return String(
+    value ?? ""
+  ).replace(
+    /[&<>"']/g,
+    character => ({
+
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+
+    })[character]
+  );
+
+}
+
+
+refreshAdmin();
+
+</script>
+
+
+</body>
+</html>
